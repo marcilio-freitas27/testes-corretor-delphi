@@ -2,16 +2,26 @@
 
 interface
 
+uses
+  System.SysUtils;
+
 type
   // Criacaoo da classe
   TCorretor = class
   // Criando o bloco de funcoes como publico
-  nome: String;
-  data: String;
-  salario: Single;
-  lucroMensal: Integer;
+  private
+    FNome: string;
+    procedure SetNome(const Value: string);
   public
+    property nome: string read Fnome write SetNome;
     function calcularComissao(lucroVenda: Single): Single;
+    function verificarNome(lucroVenda: Single): Single;
+    function verificarData(lucroVenda: Single): Single;
+    function verificarSalario(lucroVenda: Single): Single;
+  end;
+
+  ENomeInvalido = class(Exception)
+
   end;
 
 implementation
@@ -28,6 +38,33 @@ begin
   begin
     Result := 1;
   end;
+end;
+
+procedure TCorretor.SetNome(const Value: string);
+begin
+  if Value.Length >= 3 then
+  begin
+    FNome := Value;
+  end
+  else
+  begin
+    raise ENomeInvalido.Create('Error Message');
+  end;
+end;
+
+function TCorretor.verificarData(lucroVenda: Single): Single;
+begin
+
+end;
+
+function TCorretor.verificarNome(lucroVenda: Single): Single;
+begin
+
+end;
+
+function TCorretor.verificarSalario(lucroVenda: Single): Single;
+begin
+
 end;
 
 end.
