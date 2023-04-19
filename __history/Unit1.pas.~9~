@@ -3,22 +3,28 @@ unit Unit1;
 interface
 
 uses
-  DUnitX.TestFramework;
-
+  ///importando as funções
+  DUnitX.TestFramework, Corretor;
 type
   [TestFixture]
   TMyTestObject = class
+  corretor01: TCorretor;
   public
     [Setup]
     procedure Setup;
     [TearDown]
     procedure TearDown;
+    [Test]
+    [TestCase('10000')]
   end;
 
 implementation
 
 procedure TMyTestObject.Setup;
 begin
+
+corretor01.Create;
+
 end;
 
 procedure TMyTestObject.TearDown;

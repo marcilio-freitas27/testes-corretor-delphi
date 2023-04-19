@@ -16,7 +16,7 @@ type
     procedure TearDown;
     [Test]
     [TestCase('Primeiro corretor', 10000', '1000')]
-    procedure corretor01.CalcularComissao(const, Entrada: Single, Saida: Single): Single;
+    procedure corretor01.Calcular
   end;
 
 implementation

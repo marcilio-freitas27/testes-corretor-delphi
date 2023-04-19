@@ -11,14 +11,14 @@ type
   salário: Single;
   lucroMensal: Integer;
   public
-    function CalcularComissao(const lucroVenda: Single): Single;
+    function CalcularComissao(): Single;
   end;
 
 implementation
 
 { TCorretor }
 
-function TCorretor.CalcularComissao: Single;
+function TCorretor.Comissao: Single;
 begin
   if True then
   begin

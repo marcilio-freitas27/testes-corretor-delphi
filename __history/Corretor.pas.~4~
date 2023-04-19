@@ -1,0 +1,22 @@
+unit Corretor;
+
+interface
+
+type
+  // Criação da classe
+  TCorretor = class
+  // Criando o bloco de funções como público
+  public
+    function Comissao(): Single;
+  end;
+
+implementation
+
+{ TCorretor }
+
+function TCorretor.Comissao: Single;
+begin
+  Result := 1;
+end;
+
+end.

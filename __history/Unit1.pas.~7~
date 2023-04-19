@@ -8,15 +8,14 @@ uses
 type
   [TestFixture]
   TMyTestObject = class
-  corretor01: TCorretor;
+  corretor01: Corretor;
   public
     [Setup]
     procedure Setup;
     [TearDown]
     procedure TearDown;
     [Test]
-    [TestCase('Primeiro corretor', 10000', '1000')]
-    procedure corretor01.CalcularComissao(const, Entrada: Single, Saida: Single): Single;
+    [Test]
   end;
 
 implementation
