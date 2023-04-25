@@ -10,10 +10,14 @@ type
   TCorretor = class
   // Criando o bloco de funcoes como publico
   private
+  //teste para o nome da pessoas
     FNome: string;
+    FDataContratacao: TDateTime;
     procedure SetNome(const Value: string);
+    procedure SetData(const Value: TDateTime);
   public
     property nome: string read Fnome write SetNome;
+    property data: TDateTime read FDataContratacao write SetData;
     function calcularComissao(lucroVenda: Single): Single;
     function verificarNome(lucroVenda: Single): Single;
     function verificarData(lucroVenda: Single): Single;
@@ -21,6 +25,10 @@ type
   end;
 
   ENomeInvalido = class(Exception)
+
+  end;
+
+  EDataInvalida = class(Exception)
 
   end;
 
@@ -40,6 +48,18 @@ begin
   end;
 end;
 
+procedure TCorretor.SetData(const Value: TDateTime);
+begin
+  if Value <= Now then
+  begin
+    FDataContratacao := Value;
+  end
+  else
+  begin
+       raise EDataInvalida.Create('A data de contratação não pode ser maior que a atual');
+  end;
+end;
+
 procedure TCorretor.SetNome(const Value: string);
 begin
   if Value.Length >= 3 then
@@ -48,7 +68,7 @@ begin
   end
   else
   begin
-    raise ENomeInvalido.Create('Error Message');
+    raise ENomeInvalido.Create('Nome não pode ser maior que 3 cacacteres.');
   end;
 end;
 

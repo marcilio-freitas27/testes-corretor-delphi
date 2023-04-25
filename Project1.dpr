@@ -13,7 +13,8 @@ uses
   DUnitX.Loggers.Xml.NUnit,
   {$ENDIF }
   DUnitX.TestFramework,
-  Unit2 in 'Unit2.pas';
+  Unit2 in 'Unit2.pas',
+  Corretor2 in 'Corretor2.pas';
 
 {$IFNDEF TESTINSIGHT}
 var

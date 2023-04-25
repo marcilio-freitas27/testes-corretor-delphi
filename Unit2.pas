@@ -51,7 +51,11 @@ end;
 
 procedure TMyTestObject.TestData(const Entrada, Saida: Single);
 begin
-
+  Assert.WillRaise(
+  procedure
+  begin
+    corretor01.data := Entrada;
+  end, EDataInvalida);
 end;
 
 procedure TMyTestObject.TestNome(const Entrada: string);
