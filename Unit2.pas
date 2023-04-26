@@ -16,8 +16,9 @@ type
     [TearDown]
     procedure TearDown;
     [Test]
-    [TestCase('Comissao', '10000,1000')]
-    procedure TestComissao(const Entrada, Saida: Single);
+    [TestCase('Comissao 01', '0, 0')]
+    [TestCase('Comissao 02', '600001,7200')]
+    procedure TestComissao(const Entrada, Saida: Integer);
 
     [Test]
     [TestCase('Nome', 'Ze')]
@@ -30,6 +31,16 @@ type
     [Test]
     [TestCase('Salario', '10000,1000')]
     procedure TestSalario(const Entrada, Saida: Single);
+
+    [Test]
+    [TestCase('testar valor vendido inválido', '-1')]
+    [TestCase('testar valor vendido inválido', '-100')]
+    procedure TestValorVendidoInvalido(const Entrada: Integer);
+
+    [Test]
+    [TestCase('testar valor vendido inválido', '1')]
+    [TestCase('testar valor vendido inválido', '100')]
+    procedure TestValorVendidoValido(const Entrada: Integer);
   end;
 
 implementation
@@ -44,9 +55,9 @@ begin
   corretor01.Free;
 end;
 
-procedure TMyTestObject.TestComissao(const Entrada, Saida: Single);
+procedure TMyTestObject.TestComissao(const Entrada, Saida: Integer);
 begin
-      Assert.AreEqual(corretor01.calcularComissao(Entrada), Saida);
+      Assert.AreEqual(Saida, corretor01.calcularComissao(Entrada));
 end;
 
 procedure TMyTestObject.TestData(const Entrada, Saida: Single);
@@ -68,6 +79,20 @@ begin
 end;
 
 procedure TMyTestObject.TestSalario(const Entrada, Saida: Single);
+begin
+
+end;
+
+procedure TMyTestObject.TestValorVendidoInvalido(const Entrada: Integer);
+begin
+  Assert.WillRaise(
+  procedure
+  begin
+    corretor01.vendido := Entrada;
+  end, EValorVendidoInvalido);
+end;
+
+procedure TMyTestObject.TestValorVendidoValido(const Entrada: Integer);
 begin
 
 end;
